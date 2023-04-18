@@ -19,9 +19,10 @@ const sendEMail = (mailFrom,mailTo, mailSubject, mailBody) => {
     }
     
 };
-async function fetchPendingEmails(){
+async function fetchPendingEmails(filter){
     try {
-        const response = await reminderRepo.getAll();
+       // const response = await reminderRepo.getAll();
+        const response = await reminderRepo.getbyFilter(filter);
         // we have all the mails now we need to segregate those are pending and need to be sent by now 
         return response;
     } catch (error) {
@@ -40,9 +41,19 @@ const createTicket = async (data)=> {
         throw error;
     }
 }
+const update = async(id,data) => {
+    try {
+        const response = await reminderRepo.update(id,data);
+        return response;
+    } catch (error) {
+        console.log('something went wrong in service layer while fetcing ticket');
+        throw error;
+    }
+}
 
 module.exports = {
     sendEMail,
     fetchPendingEmails,
-    createTicket
+    createTicket,
+    update
 };

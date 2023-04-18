@@ -24,7 +24,7 @@ const startServer = async()=>{
         //     console.log('cron is running');
         // })
         console.log(`server is listening at ${PORT}`);
-        //jobs();
+        jobs();
         // sendEMail(
         //      'shuvamforbackend@gmail.com',
         //      'shubhamrauniyar48@gmail.com',
